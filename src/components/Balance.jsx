@@ -3,7 +3,7 @@ import {store} from "../configureStore/store.js";
 
 const Balance = () => {
 
-    const {balance} = useSyncExternalStore(store.subscribe, store.getState)
+    const {balance} = useSyncExternalStore(store.subscribe, store.getState) //  синхронизации с внешним хранилищем
 
     return (
         <div>
