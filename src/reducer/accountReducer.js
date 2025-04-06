@@ -1,7 +1,7 @@
 import {DEPOSIT, WITHDRAW} from "../actions/accountActions.js";
 
 /*
-tyoe State = {
+type State = {
     balance : number,
     owner: string,
     accNumber: number
