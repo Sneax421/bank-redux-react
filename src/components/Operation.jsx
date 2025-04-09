@@ -1,26 +1,21 @@
 import {useState} from 'react';
 import {deposit, withdraw} from '../features/account/accountSlice.js'
 import {useDispatch} from "react-redux";
-import {addQuote} from "../features/quote/quoteSlice.js";
+import {fetchQuote} from "../actions/asyncQuoteAction.js";
+
 
 const Operation = () => {
     const [sum, setSum] = useState(0);
 
     const dispatch = useDispatch();
 
-    const fetchQuote = () => {
-        dispatch(addQuote('Pending...'))
-        fetch('https://api.gameofthronesquotes.xyz/v1/random')
-            .then(res => res.json())
-            .then(data => dispatch(addQuote(data.sentence)))
-            .catch(() => dispatch(addQuote('Failed to fetch quotes')));
-    }
 
 
     return (
         <>
             <div className={'logo d-flex justify-content-center'}>
-                <button className={'btn btn-primary btn-lg'} onClick={() => dispatch(withdraw(sum))}
+                <button className={'btn btn-primary btn-lg'}
+                        onClick={() => dispatch(withdraw(sum))}
                 >Withdraw
                 </button>
                 <input
@@ -29,11 +24,13 @@ const Operation = () => {
                     onChange={e => setSum(+e.target.value)}
                     value={sum}
                 />
-                <button className={'btn btn-primary btn-lg'} onClick={() => dispatch(deposit(sum))}>Deposit</button>
+                <button className={'btn btn-primary btn-lg'}
+                        onClick={() => dispatch(deposit(sum))}>Deposit
+                </button>
             </div>
             <div className={'logo d-flex justify-content-center'}>
                 <button
-                    onClick={fetchQuote}
+                    onClick={() => dispatch(fetchQuote())}
                     className={'btn btn-info btn-lg'}
                 >Get Quote
                 </button>
