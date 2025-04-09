@@ -1,8 +1,10 @@
 import {configureStore} from "@reduxjs/toolkit";
-import balance from '../features/account/accountSlice.js'
+import balance from '../features/account/accountSlice.js';
+import quote from '../features/quote/quoteSlice.js';
 
 export const store = configureStore({
     reducer: {
-        balance
+        balance,
+        quote
     }
 })
