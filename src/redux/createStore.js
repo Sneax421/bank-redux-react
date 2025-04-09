@@ -7,6 +7,7 @@ export const createStore = (reducer, initialState) => {
     }
 
     function dispatch(action) {
+        // enhancers moschna peredawatj funkti/ useliteli
         state = reducer(state, action);
         subscribers.forEach(callback => callback());
     }
